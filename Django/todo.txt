@@ -1,0 +1,37 @@
+
+python manage.py startapp todos 이용 
+
+Todo app만들기 (app이름 todos) 
+
+기능 : 일정 목록 보여주기 , 일정 등록 , 일정 수정, 일정 삭제 , 일정 다한 것은 없애는 기능 (done)
+
+
+Todo 모델링 ( 모델이름 Todo)
+
+id 는 자동으로 시퀀스 돼서 따로 지정 x
+
+
+매개변수
+
+title --> varchar(50), not null, 일정제목
+
+contents --> varchar(200),  not null, 일정 내용
+
+todo_date --> datetime, not null, 일정등록일
+
+done --> 체크하면 일정 날려버리는식으로
+
+
+
+템플릿 작성  : todos 밑에 templates 딕셔너리 만들고 그 밑에 todos 딕셔너리 또 만들어서 html 작성
+
+
+
+
+
+
+
+
+
+
+

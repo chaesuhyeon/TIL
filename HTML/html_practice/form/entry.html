@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>회원 가입 페이지</h2>
+
+<form action="/action_page.php">
+  <label for="id">ID:</label><br>
+  <input type="text" id="id" name="id"><br>
+  <label for="email">E-mail:</label><br>
+  <input type="email" id="email" name="email"><br>
+  <label for="password">password:</label><br>
+  <input type="password" id="password" name="password"><br><br>
+  <label for="passwordok">confirm password:</label><br>
+  <input type="password" id="passwordok" name="passwordok"><br><br>
+
+  <p>메일 수신 동의:
+  <input type="radio" id="agree" name="agree" value="수신 동의">
+  <label for="agree">수신 동의</label>
+  <input type="radio" id="disagree" name="disagree" value="수신 동의하지 않음">
+  <label for="disagree">수신 동의하지 않음</label><br></p>
+
+  <p>관심 분야: <br>
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="AI">
+  <label for="vehicle1">AI</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="IOT">
+  <label for="vehicle2">IOT</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="BigData">
+  <label for="vehicle3">BigData</label><br>
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="Cloud">
+  <label for="vehicle3">Cloud</label><br>
+    </p>
+   
+    <p>역할:<br><br>
+    <label for="role">Choose a role:</label>
+    <select id="roles" name="roles">
+    <option value="Back-End Developer">Back-End Developer</option>
+    <option value="Front-End Developer">Front-End Developer</option>
+    <option value="DevOps Engineer">DevOps Engineer</option>
+    <option value="Full-Stack Developer">Full-Stack Developer</option>
+    <option value="Analysis">Analysis</option>
+    <option value="Architect">Architect</option>
+    </select><br><br>
+    <input type="submit" value="가입">
+    <input type="reset" value="초기화">  
+    </p>
+
+</form> 
+
+
+
+</body>
+</html>

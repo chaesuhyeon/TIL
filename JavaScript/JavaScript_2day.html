@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change the style of an HTML element.</p>
+
+<button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button> <br>
+<!-- id = demo 인곳의 폰트 사이즈가 바뀜-->
+<!-- style.display='none'  -> 버튼 누르면 아무것도 안나옴(사라짐)  -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript in Body</h2>
+
+<p id="demo1"></p>
+
+<script>
+document.getElementById("demo1").innerHTML = "My First JavaScript";
+// id = demo1 인 곳에 My First JavaScript라고 적어라~ 
+</script>
+
+
+<!-- -------------------------------------------------------------------------------- -->
+<script>
+  function myFunction() {
+    document.getElementById("demo2").innerHTML = "Paragraph changed.";
+  }
+
+  // id = demo2 인 곳에 버튼을 누르면 함수가 실행되는데, 이 함수는 demo2에 Paragraph changed. 라고 적어라~
+  </script>
+
+<h2>JavaScript in Bodybody</h2>
+
+<p id="demo2">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">Try it</button>
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript</h2>
+
+<p>When adding a number and a string, JavaScript will treat the number as a string.</p>
+
+<p id="demo3"></p>
+<script>
+  let x = 16 + "Volvo"; // 16Volvo
+  document.getElementById("demo3").innerHTML = x;
+  </script>
+  
+<button type="button" onclick="document.getElementById('demo3').style.fontSize='25px'">Click and fontsize change</button>
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript Functions</h2>
+
+
+<p>This example calls a function which performs a calculation and returns the result:</p>
+
+<p id="demo4"></p>
+
+<script>
+var xx = myFunctions(4, 3);
+document.getElementById("demo4").innerHTML = xx;
+
+function myFunctions(a, b) {
+  return a * b;
+}
+</script>
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript Object 1</h2>
+
+<p id = "demo5"></p>
+
+<script>
+  const person = {firstName :"John", lastname : "Doe", age : 50, eyeColor : "blue"}
+  document.getElementById("demo5").innerHTML = person.firstName + " " + person.lastname + " is " + person.age + " years old and he has " + person.eyeColor +" eyes "
+</script>
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript Object 2</h2>
+
+<p id = "demo6"></p>
+
+<script>
+  const persons = {firstName :"john", lastname : "doe", age : 55, eyeColor : "gray"}
+  document.getElementById("demo6").innerHTML = persons["firstName"] + " " + persons["lastname"] + " is " + persons["age"] + " years old and he has " + persons["eyeColor"] +" eyes "
+</script>
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<h2>JavaScript HTML Events</h2>
+<button onclick="this.innerHTML = Date()">The time is ? </button>   <!-- 버튼 자체에 text 바꾸기 가능-->
+
+
+
+
+</body>
+</html> 
+
+

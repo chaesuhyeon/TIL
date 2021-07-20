@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <script>
+        //html internal javascript
+        document.write("html internal script <br>"); //문서가 끝난다는 의미로 ; 넣어주기
+        document.write(1+1)
+        document.write("<br/>")
+      </script>
+      <!-- external javascript  , 외부꺼 가져올때 defer 써주기!!! 그리고 링크할때 프로그래밍이라서 src(소스)써주기 , 앞에선 href였음!-->
+      <script src="01.hello.js"></script> 
+  </head>
+  <body>
+    <h1>Hello HTML</h1>
+    1+1 <!-- TEXT --><br>
+    inline script</br>
+    <input type="button" value="hi" onclick="alert('hi')"><br> <!-- window.alert("hi") 와 같다.-->
+    <script>
+      document.write("body tag internal javascript")
+    </script>
+  </body>
+</html>

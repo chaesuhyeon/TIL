@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function blurHandler(){
+        let inputElement = document.getElementById("name");
+        inputElement.value = inputElement.value.toUpperCase();
+      }
+      
+      function changeHandler(){
+        const inputElement = document.getElementById("name");
+        console.log(inputElement.value.toUpperCase())
+      }
+      
+      function preferedBrowser(){
+        const selectElement = document.getElementById("browsers");
+        alert("You prefer browsing internet with prefer" + selectElement.value)
+      }
+
+      function focusHandler(inputText){
+        inputText.style.background = "yellow";
+      }
+
+      function clickHandler(button){
+        const bodyElement = document.getElementById("body");
+        if(button.value === 'dark'){
+          button.value = 'light';
+          bodyElement.style.background="black";
+          bodyElement.style.color = "white";
+        } else{
+          button.value = 'dark';
+          bodyElement.style.background="white";
+          bodyElement.style.color = "black";
+        }
+      }
+    </script>
+  </head>
+  <body id= "body">
+    <form>
+    <!-- event : blur / handler:onblur / eventsouce : inputelement -->
+    이름 : <input type="text" id = "name" 
+                  onblur=" blurHandler()" 
+                  onfocus="focusHandler(this)"
+                  onchange="changeHandler()"/>
+    <p>When you leave the input field, 
+      a function is triggered which 
+      transforms the input text to upper case.</p>
+      Choose which browser you prefer:
+    <select id="browsers" onchange="preferedBrowser()">
+      <option value="Chrome">Chrome</option>
+      <option value="Internet Explorer">Internet Explorer</option>
+      <option value="Firefox">Firefox</option>
+    </select> <br><br>
+    <input type="button" id = "thema" value= "dark" onclick="clickHandler(this)"/>
+      </form>
+  </body>
+</html>

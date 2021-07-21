@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./css/style.css"></link>
+<body>
+  <div id="head">
+    <a href= "index.html">
+    <h1>WEB</h1>
+    </a>
+  </div>
+  <div class="wrap">
+    <div class="login-title">
+<div id="login">
+<h2>로그인 페이지</h2> <!--회원가입 누르면 회원가입 페이지로 이동-->
+<h5>아이디, 비밀번호를 입력해 주세요</h5>
+</div>
+</div>
+<form action="/action_page.php">
+  <label for="id">ID:</label><br>
+  <input type="text" id="id" name="id" value=""><br>
+  <label for="password">password:</label><br>
+  <input type="password" id="password" name="password" ><br><br>
+  <button type="button" onclick=test()>로그인</button>
+  <button type="button" onclick="location.href='entry.html' ">회원가입</button>
+</form> 
+</div>
+<script>
+function move(){
+  location.href='todo.html'
+}
+function test() {
+      let i1 = document.getElementById('id').value;
+      let p1 = document.getElementById('password').value;
+      if( i1 === "아이디" && p1 === "1234"  ) {
+        localStorage.setItem("id", i1)     // 아이디, 비번이 맞을때 로컬스토리지에 저장이 돼야해서 이부분 검증하는 곳에 적어줌
+        localStorage.setItem("password", p1)
+        return move()        
+          } else {
+            alert("아이디와 비밀번호를 확인해 주세요")
+          }
+        }
+
+</script>
+
+</body>
+</html>
+<!-- id :아이디 / password : 1234 -->

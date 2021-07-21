@@ -1,0 +1,99 @@
+h1 {
+  font-size: 45px;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  margin: 0;
+  padding: 20px;
+}
+
+div{
+  display: block;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+#grid ol {
+  padding-left: 33px;
+}
+
+ol {
+  border-right: 1px solid gray;
+  width: 150px;
+  margin: 0;
+  padding: 20px;
+}
+
+#grid #index {
+  padding-left: 25px;
+}
+
+@media(max-width:800px){
+  #grid{
+    display: block;
+  }
+  ol{
+    border-right:none;
+  }
+  h1 {
+    border-bottom:none;
+  }}
+
+  h2 { color:#0575c0; }
+  
+  label {color :#4169E1}
+
+  button { background-color: #FFC0CB;}
+  
+  body {background-color: rgb(221, 244, 250);}
+
+  .wrap {
+    margin: 10px auto;
+    width: 300px;
+}
+
+.login-title {
+    color: black;
+    width: 300px;
+    height: 200px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Boracay_White_Beach_in_day_%28985286231%29.jpg');
+    background-position: center;
+    background-size: cover;
+
+    border-radius: 10px;
+    text-align: center;
+    padding: 40px;
+
+}
+
+form fieldset {
+  margin: 5px 0px;
+}
+
+form legend {
+  font-size: 18px;
+  color: #0066ff;
+  font-weight: 600;
+}
+
+form label.reg {
+  font-size: 14px;
+  width: 120px;
+  float: left;
+}
+
+form label em {
+  font-size: 15px;
+  color: red;
+  font-weight: 800;
+}
+
+form ul li {
+  list-style: none;
+}
+
+form fieldset.sendform {
+  text-align: center;
+}

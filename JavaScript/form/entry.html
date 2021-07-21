@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>entry</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./css/style.css"></link>
+<body>
+  <div id="head">
+    <a href= "index.html">
+    <h1>WEB</h1>
+    </a>
+  </div>
+  
+<h2>회원 가입 페이지</h2>
+
+<form action="/action_page.php">
+  <div id = "form" value ="">
+  <fieldset>
+    <legend> 가입자 정보 입력 </legend>
+    <ul>
+        <!-- em : 진하게, 강조 -->
+        <!-- id : lable의 for랑 연결된 부분 / name은 다른 파일로 넘겨줄 파라미터 명 -->
+        <li> <label class="reg" for="new_id"> ID <em> * </em> </label>
+            <input type="text" id="new_id" name="new_id"  size="20" autocomplete="on" required>
+        </li>
+        <li> <label class="reg" for="new_pw1"> Password <em> * </em> </label>
+            <input type="password" id="new_pw1" name="new_pw1"  value="" size="20" required>
+        </li>
+        <li> <label class="reg" for="new_pw2"> RePassword <em> * </em> </label>
+            <input type="password" id="new_pw2" name="new_pw2" value="" size="20" required> <div id = "pwsame"></div>
+        </li>
+        <li> <label class="reg" for="user_name"> 이름 <em> * </em> </label>
+            <input type="text" id="user_name" name="user_name"  size="20" required>
+        </li>
+        <li> <label class="reg" for="user_mail"> E-mail <em> * </em> </label>
+            <input type="email" id="user_mail" name="user_mail"  size="20" required>
+        </li>
+    </ul>
+</fieldset>
+<fieldset>
+  <legend> 메일 수신 </legend>
+  <p>
+  <input type="radio" id="agree" name="agree" value="수신 동의">
+  <label for="agree">수신 동의</label>
+  <input type="radio" id="disagree" name="disagree" value="수신 동의하지 않음">
+  <label for="disagree">수신 동의하지 않음</label><br></p>
+</fieldset>
+</div>
+
+<fieldset>
+  <legend> 관심 분야 </legend>
+  <p>
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="AI">
+  <label for="vehicle1">AI</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="IOT">
+  <label for="vehicle2">IOT</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="BigData">
+  <label for="vehicle3">BigData</label><br>
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="Cloud">
+  <label for="vehicle3">Cloud</label></p>
+  </fieldset>
+   
+  <fieldset>
+    <legend> 역할 </legend>
+    <p>
+    <label for="role">Choose a role:</label>
+    <select id="roles" name="roles">
+    <option value="Back-End Developer">Back-End Developer</option>
+    <option value="Front-End Developer">Front-End Developer</option>
+    <option value="DevOps Engineer">DevOps Engineer</option>
+    <option value="Full-Stack Developer">Full-Stack Developer</option>
+    <option value="Analysis">Analysis</option>
+    <option value="Architect">Architect</option>
+    </select><br></fieldset> <br>
+    <button type="button" onclick=entryTest()>가입</button>
+    <input type="reset" value="초기화">  </p>
+  
+  
+</form> 
+</div>
+
+<script>
+  function entryTest() {
+    let idElement = document.getElementById("new_id").value;
+    let paswwordElement = document.getElementById("new_pw1").value;
+    let repasswordElemnt = document.getElementById("new_pw2").value;
+    let nameElement = document.getElementById("user_name").value;
+    let emailElement = document.getElementById("user_mail").value;
+    if (paswwordElement !== repasswordElemnt){
+      document.getElementById("pwsame").innerHTML="비밀번호가 같지 않습니다. 다시 입력해 주세요."
+    } else if(idElement == "" && paswwordElement=="" && repasswordElemnt=="" && nameElement=="" && emailElement == ""){
+      alert("빈칸을 모두 채워주세요")
+    } else {
+      location.href='todo.html'
+    }
+  }
+    </script>
+</body>
+</html>

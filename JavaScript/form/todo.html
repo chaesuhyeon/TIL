@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>todo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="./css/style.css"></link>
+<body onload="logincheck()">    <!-- todo 페이지에 넘어올때 아이디/비번 값을 확인해야함 - 개발자 도구를 이용하여 application에 localstorage와  console에 찍히는지 확인 -->
+  <div id="head">
+    <a href= "index.html">
+    <h1>WEB</h1>
+    </a>
+  </div>
+<h2>일정관리 페이지</h2>
+
+<form action="/action_page.php">
+<fieldset>
+  <legend> 일정 등록 시스템 </legend>
+<div id = "todos">
+<p>
+<label for="title">제목:</label>
+<input type="text" id="title" value= "제목" name="title"></p>
+
+<p>내용 : <br>
+<textarea id = "message" name="message" rows="10" cols="30"></textarea></p>
+<p>
+<label for="todo_time">일정:</label>
+<input id = "todo_time" type="datetime-local" id= "todo_time" name="todo_time">
+<button type="button" onclick="document.getElementById('todo').innerHTML= func() ">일정 등록</button>
+
+
+</p>
+</div>
+
+</fieldset>
+<fieldset>
+  <div id = "todo">
+    
+  </div>
+</fieldset>
+
+</form> 
+<script>
+function func() {
+  let inputElement = document.getElementById("title")
+  let textElement = document.getElementById("message")
+  let dateElement = document.getElementById("todo_time")
+  return inputElement.value + " : " + textElement.value + " : " + dateElement.value
+}
+function logincheck(){
+  let localId = localStorage.getItem("id");
+  let localPw = localStorage.getItem("password");
+  console.log(localId, localPw)
+
+}
+
+  </script>
+
+
+</body>
+</html>

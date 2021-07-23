@@ -1,3 +1,17 @@
+# DB
+
+- 오류가 없는 무결성 매우 중요(제약 사항에 맞게) - 제약사항(타입, not null 등)
+- DDL : CREATE , DROP, ALTER
+- DML : INSERT , DELETE , UPDATE
+- DQL : SELECT
+- DCL : GRANT(권한주는 것) , REVOKE(권한 취소) 
+- TCL : COMMIT , ROLLBACK(취소)
+
+- DML 하고 나서는 COMMIT  | ROLLBACK 필수. transaction때문  (Maria DB 에서는 default auto로 해줌)
+- auto로 안하고 싶으면, set autocommit = 0      <---> auto로 하고싶으면 set autocommit =1
+
+
+
 # SQL
 
 - SQL은 대소문자 구별이 없다.
@@ -5,7 +19,7 @@
 
 
 
-## 6.1 select 문
+## 6.1 SELECT 문
 
 - 데이터베이스 내의 테이블에서 원하는 정보를 추출하는 명령어
 
@@ -70,6 +84,10 @@ SELECT userID, Name, FROM userTbl WHERE birthYear >= 1970 AND height >= 185;
 
 
 ```
+
+- group by로 그룹을 지정할때의 조건절은 where절이 아닌 having절 사용
+
+- select distinct :  중복되는 데이터들은 한번만 나오게 하는 것 (distinct)
 
 
 

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Polls Application Site{% endblock %}
+
+{% block sidebar %}
+{{ block.super }} <!-- 내부모에 있는것 출력하겠다 admin link (base.html에 있는 sidebar부분) -->
+<ul>
+    <li><a href="/polls/">Polls_Home</a></li>
+</ul>
+{% endblock %}

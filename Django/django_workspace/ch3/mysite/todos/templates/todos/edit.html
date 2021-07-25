@@ -1,0 +1,14 @@
+{% extends "base_todos.html" %}
+{% block title %}일정 수정 페이지{% endblock %}
+{% block content %}
+  <h3>일정 수정</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+          {{form.as_table}}
+    </table>
+    <input type = "submit" value = "수정">
+    <button type="button" onClick="history.go(-1) ">일정 목록으로 가기</button>
+    <button type="button" onClick="history.go(-2) ">메인 메뉴로 가기</button>
+  </form>
+{% endblock %}

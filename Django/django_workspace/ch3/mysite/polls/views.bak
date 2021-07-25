@@ -1,0 +1,103 @@
+from django.forms.fields import DateField
+from django.http.response import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from .models import Question,Choice
+from django.urls import reverse
+from .forms import QuestionForm,ChoiceForm
+from django.utils import timezone
+
+# Create your views here.
+# /polls/ 요청시 
+# latest_question_list에 Question의 모둔 데이터 select all 저장
+# templates - index.html select (latest_question_list전달)
+# question 리스트 출력
+
+def index(request):
+    # 입력값 검증 (지금은 할게 없어서 안함 - 들어온 데이터가 없어서)
+    # business method 호출  :question 목록 가져오기
+    #                       select * from polls_question order by DECS pub_date
+    latest_question_list = Question.objects.all().order_by('-pub_data') # 정렬해서 가져와라 /
+    print(type(latest_question_list))
+    # 일정 범위의 data 저장
+    context ={'latest_question_list' : latest_question_list} # 딕셔터리 형태. 키값이 index.html의 latest_question_list와 일치하면됨
+   # template select
+    return render(request, 'polls/index.html', context) # 'polls/index.html' 라는 view를 select
+    
+
+# polls/id/ 요청시 id에 해당하는 choice 항목 출력하고
+# vote button 출력
+def detail(request, question_id): # int 타입의 question_id를 
+    # 입력값 검증 : question_id
+    # business method 호출 : question_id에 해당하는Question 값
+    # try :
+    #   question = Question.objects.get(pk = question_id)
+    # except Question.DoesNotExist:
+    #   raise Http404("Question does not exist") 
+    # shortcut : get_object_or404 이용
+    question = get_object_or_404(Question, pk = question_id )
+    # 일정 범위에 데이터 저장
+    # templates select - polls/datail.html
+    context = {'question': question}
+    return render(request,'polls/detail.html', context )
+  
+
+# /polls/id/vote 요청시 id의 vote add한 후 결과페이지로 redirect
+def vote(request, question_id):
+    # 입력값 검증 : question_id 존재하지 않는 경우 404 error 
+    # business logic 호출 : question_id의 Question 객체 가져옴
+    question = get_object_or_404(Question, pk = question_id )
+    
+    # reqeust choice_id에 해당하는 vote조회 - 증가 - 수정
+    # error : question, Error_message 저장,  detail.html template select
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+
+    except (KeyError, Choice.DoesNotExist):
+        context = {'question' : question,'error_message' :"You didn't select a choice"}
+        return render(request,'polls/detail.html',context)
+    else:
+        # select_choice vote 증가 - 수정
+        selected_choice.votes +=1
+        selected_choice.save()
+        # redirect - result.html template select
+        return HttpResponseRedirect(reverse('polls:results', args =(question.id,)))
+# /polls/id/result/ 요청 시 id에 해당하는 vote 결과 출력
+
+def results(request, question_id):
+    # 입력값 검증 : question_id 존재하지 않는 경우 404 error 
+    # business logic 호출 : question_id의 Question 객체 가져옴
+    question = get_object_or_404(Question, pk = question_id )
+    # 일정 범위에 데이터 저장 , template select
+    context = {'question': question}
+    return render(request,'polls/results.html', context)
+
+# question 추가 등록
+# Form 객체 활용 : Question 등록 시 request.POST['question_txt']
+def questionCreate(request):
+    if request.method == 'POST': # 입력된 데이터 model에 저장
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save() # QuestionForm으로 부터 quetion_txt를 Question model 객체에 매핑해서 Question model객체 리턴
+            question.pub_date = timezone.now() # Question model 시스템 현재 날짜 할당
+            question.save() # db에 insert
+        return HttpResponseRedirect(reverse('polls:index'))
+    elif request.method == 'GET': # QuestionForm 입력하는 화면 제공 
+        form = QuestionForm()
+        context = {'form':form}
+        return render(request, 'polls/question_input.html',context)
+
+#  choice 저장
+def choiceCreate(request):
+    if request.method == 'POST':
+        form = ChoiceForm(request.POST)
+        if form.is_valid():
+            choice = form.save() 
+            choice.vote =0  # 새로 추가 됐기 때문에 vote가 0이다.
+            choice.save() # db에 insert     
+        return HttpResponseRedirect(reverse('polls:detail', args =(choice.question.id,)))
+
+# choice 입력화면
+def choiceInput(request,question_id): # 어떤 아이디의 choice를 추가할 것인가
+    question = get_object_or_404(Question, pk = question_id )
+    context = {"question": question}
+    return render(request, 'polls/choice_input.html',context)

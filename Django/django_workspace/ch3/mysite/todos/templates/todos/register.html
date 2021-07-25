@@ -1,0 +1,12 @@
+{% extends "base_todos.html" %}
+{% block title %}일정 등록 페이지{% endblock %}
+{% block content %}
+<form action="{% url 'todos:register' %}" method="POST">
+       {% csrf_token %}
+       <table>
+              {{form.as_table}}
+       </table>
+       <input type = "submit" value = "등록">
+       <button type="button" onClick="history.go(-1) ">메인 메뉴로 가기</button>
+     </form>
+{% endblock %}

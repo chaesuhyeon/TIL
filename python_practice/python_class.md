@@ -167,3 +167,67 @@ print('주소:', maria.address)    # 서울시 서초구 반포동
 
 
 
+#### class 상속
+
+```python
+class 부모클래스이름:
+    코드
+ 
+class 자식클래스이름(부모클래스이름):    # 상속
+    코드
+```
+
+
+
+- 클래스의 상속관계를 확인하고 싶을때는 issubclass 함수 사용
+
+> ```python
+> >>> issubclass(class1, class2)
+> >>> True
+> ```
+
+
+
+- super().__init__() 를 자식클래스에서 작성해줘야함. 
+- super().__init__()를 사용안하는 경우 : 자식클래스에서  __init__ 메서드가 없다면 부모 클래스의 __init__이 자동으로 호출되므로 부모 클래스의 속성을 사용할 수 있다.
+
+- 오버라이딩(overriding) :  부모클래스의 메서드를 무시하고 새로운 메서드를 만드는 것
+
+
+
+> 다중상속
+>
+> ```python
+> class 부모클래스이름1:
+>     코드
+>  
+> class 부모클래스이름2:
+>     코드
+>  
+> class 자식클래스이름(부모클래스이름1, 부모클래스이름2):
+>     코드
+>     
+>     
+> # ex)
+> class Person:
+>     def greeting(self):
+>         print('안녕하세요.')
+>  
+> class University:
+>     def manage_credit(self):
+>         print('학점 관리')
+>  
+> class Undergraduate(Person, University):  # 두개를 상속받음
+>     def study(self):
+>         print('공부하기')
+>  
+> james = Undergraduate()
+> james.greeting()         # 안녕하세요.
+> james.manage_credit()    # 학점 관리
+> james.study()            # 공부하기
+> ```
+
+
+
+
+

@@ -20,9 +20,10 @@
                 <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 {{ page_obj.paginator.count|sub:page_obj.start_index|sub:forloop.counter0|add:1 }}
             </td>
-            <td>
+            <td class="text-left" >
                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
             </td>
+            <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ question.create_date }}</td>
         </tr>
         {% endfor %}

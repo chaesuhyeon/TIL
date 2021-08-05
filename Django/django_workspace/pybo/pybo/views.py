@@ -59,3 +59,6 @@ def question_create(request):
 
 def search():
     pass
+
+def hit():
+    pass

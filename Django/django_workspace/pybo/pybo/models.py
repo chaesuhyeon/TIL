@@ -10,6 +10,7 @@ class Question(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
+    question_hit = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.content

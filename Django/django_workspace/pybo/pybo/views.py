@@ -62,3 +62,6 @@ def search():
 
 def hit():
     pass
+
+def like():
+    pass

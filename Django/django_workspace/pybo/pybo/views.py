@@ -57,11 +57,3 @@ def question_create(request):
     return render(request, 'pybo/question_form.html', context)
 
 
-def search():
-    pass
-
-def hit():
-    pass
-
-def like():
-    pass

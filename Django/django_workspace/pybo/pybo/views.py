@@ -59,3 +59,6 @@ def question_create(request):
 
 def common_create():
     pass
+
+def file ():
+    pass

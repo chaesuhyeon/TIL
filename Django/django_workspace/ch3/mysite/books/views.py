@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from .models import Author, Book, Publisher
 # Create your views here.
 
-class BooksModelView(TemplateView):
+class BooksModelView(TemplateView):    # class view
     template_name = "books/index.html"
 
     def get_context_data(self, **kwargs):

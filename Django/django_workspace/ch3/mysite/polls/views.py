@@ -15,6 +15,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic import detail
 
+#def 에서 class로
 class IndexView(ListView): # 기본적으로 object_list로 되어있고, 모델 소문자._list.html로 응답함. 근데 우리가 저장한 형식이랑 다르니 적어주면됨
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'

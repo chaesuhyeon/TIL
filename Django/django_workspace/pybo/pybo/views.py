@@ -62,3 +62,6 @@ def common_create():
 
 def file ():
     pass
+
+def post_hit():
+    pass

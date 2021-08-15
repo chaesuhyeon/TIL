@@ -65,3 +65,6 @@ def file ():
 
 def post_hit():
     pass
+
+def good():
+    pass

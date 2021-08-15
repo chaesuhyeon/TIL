@@ -105,7 +105,7 @@
 
 > ## 반응형 웹
 
-- `<meta name="viewport" content="device-width, initial-scale=1.0">`   같이 위에서 meta를 선언.  -> 반응형 웹 하겠다~ 선언
+- `<meta name="viewport" content="device-width, initial-scale=1.0">`   같이 위에서 meta를 선언.  -> 반응형 웹 하겠다~~ 선언
 - 반응형 웹이란 ? 디바이스의 크기에 맞게 자동으로 크기를 맞춰주는 것
 - @media(max-width:800px) -> 800픽셀 이하로 내려가면 속성들을 적용
 - ex ) {border-right : none;} : 오른쪽에 있는 선 없애라

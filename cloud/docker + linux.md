@@ -18,6 +18,15 @@ tag : 버전
 > ```
 
 - root user인 경우 프롬프트가 #으로 표시 ,  root user가 아니면 $로 표시 
+- docker image prune -a : 사용하고 있지 않은 이미지 모두 삭제 
+- docker image rm mariadb:latest  --> mariadb 이미지 삭제
+- - docker system prune  --> rm 한다음에 system prune 해주는게 좋음 . 사용하지 않는 캐시 제거 해줌
+  - 컨테이너 삭제할 때는 rm  // 이미지 삭제할때는 image 생략하고 rmi 써줌
+  - docker image rm  이미지이름 // docker rmi 이미지이름 // docker rm 컨테이너이름
+
+
+
+
 
 
 
@@ -32,6 +41,19 @@ tag : 버전
   - -it 옵션으로 상호작용하기 
 
 ---
+
+> nginx 웹서버 설치
+
+- docker images   : 현재 nginx 이미지 없음
+- docker run --name nginx -d -p 80:80 nginx:latest   --> docker pull nginx 안해도 로컬에 없으면 디폴트로 설정되어 있는 docker hub에서 가져와서 이미지 다운
+- - -d :데모 -->  백그라운드로 돌아가게   / -p --> 포트 지정 
+- docker images  --> 이미지에 nginx 나옴
+- docker ps  -->  돌아가고 있는 서버 확인 
+- docker exec -it nginx bin/bash  --> nginx 서버 root로 상호작용하기
+
+---
+
+
 
 # Linux
 

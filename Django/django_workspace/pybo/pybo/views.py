@@ -57,14 +57,3 @@ def question_create(request):
     return render(request, 'pybo/question_form.html', context)
 
 
-def common_create():
-    pass
-
-def file ():
-    pass
-
-def post_hit():
-    pass
-
-def good():
-    pass

@@ -194,6 +194,47 @@ tag : 버전
 
 - - webapp2 컨테이너가 돌아가고 있는지 확인
 
+
+
+> Dockerfile - python
+
+- cd C:\Users\Chae\Desktop\TIL\Django\django_workspace\venv\pybo\Scripts
+- activate
+- cd C:\Users\Chae\Desktop\TIL\docker_workspace\Dockerfile\django
+
+- pip freeze > requirements.txt
+
+- ```dockerfile
+  # 파이썬 3.X 버전 / base image python3
+  FROM python:3
+  
+  # pybo : 앱 이름  // project copy할 directory 생성
+  WORKDIR /usr/src/pybo
+  
+  # install할 package 복사
+  COPY requirements.txt ./
+  
+  # pip install
+  RUN pip install --no-cache-dir -r requirements.txt
+  
+  # 로컬에 있는 파일들 (.) 을 가져다가 해당되는 working directiory에 copy
+  # project source copy : host project root에서 container의 /usr/src/pybo에 복사
+  COPY . .
+  
+  EXPOSE 8000  # 포트 8000
+  
+  # python embeded server 실행 , 인바운드 : 어디서나 요청가능하도록 8000포트로
+  CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+  ```
+
+- docker image build -t pybo:v1 .
+
+- docker run --name pybo -p 8000:8000 pybo:v1
+
+- docker ps
+
+- http://localhost:8000
+
 ---
 
 ---

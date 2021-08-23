@@ -26,10 +26,6 @@ tag : 버전
 
 
 
-
-
-
-
 > ##### 재시작할 때  
 
 - docker ps : 상태 확인 
@@ -39,6 +35,8 @@ tag : 버전
 - - ubuntu  컨테이너에 bin/bash 명령어 실행 
 - - / exec - start 상태 아니면 실행 안됨
   - -it 옵션으로 상호작용하기 
+
+
 
 ---
 
@@ -50,6 +48,87 @@ tag : 버전
 - docker images  --> 이미지에 nginx 나옴
 - docker ps  -->  돌아가고 있는 서버 확인 
 - docker exec -it nginx bin/bash  --> nginx 서버 root로 상호작용하기
+
+
+
+>nginx 서버 구조 보기
+
+- docker run --name nginx -d -p 80:80 nginx:latest
+- - run : 컨테이너 생성하고 시작하는 명령어  
+  - -d : 백그라운드로 실행 시키기 , -d안쓰면 command line 안떨어짐 
+  - -p : 80포트로 생성 , http://localhost
+  - nginx:latest   : 최신버전으로 
+- docker exec -it nginx bin/bash
+- cat etc/nginx
+- cat etc/nginx/conf.d
+- cat etc/nginx/conf.d/default.conf
+- ls -l /usr/share/nginx/html
+- cat /usr/share/nginx/html/index.html
+
+---
+
+
+
+- > nginx -  index.html 커스텀
+
+  - vs code로 index.html 새로 작성
+
+  - cd C:\Users\Chae\Desktop\TIL\docker_workspace\nginx
+  - mkdir backup
+  - cd backup
+  - docker container cp  nginx:/usr/share/nginx/html/index.html .
+  - - container의 index.html 파일을 host에 backup 및 확인 작업
+  - - nginx:/usr/share/nginx/html/에 있는 index.html파일을 현재 디렉토리(.)에 cp(카피)해라
+  - type index.html
+  - - host에서 작성한 index.html container에 copy
+  - cd ..   --> C:\Users\Chae\Desktop\TIL\docker_workspace\nginx로 이동 (vscode로 작성한 index.html 파일이 있는 위치)
+  - docker cp ./index.html nginx:/usr/share/nginx/html/    --> 현재 디렉토리에 있는 index.html(내가 직접 작성한 파일)을  nginx:/usr/share/nginx/html/에 덮어씌우기
+  - docker exec -it nginx bin/bash : 상호작용해서 들어가기
+  - cat /usr/share/nginx/html/index.html  ->  index.html 파일이 내가 작성한 파일로 내용이 바뀌었는지 확인 해보기  --> http://localhost로 들어가보기
+  - docker diff nginx :  기존과 뭐가 달라졌는지 확인할 수 있음 , 변경된 container image build .
+  - docker commit nginx ddd8177/mynginx:v1   --> 현재 container  image로 저장 . 커밋
+  - - nginx : 컨테이너 이름
+    - ddd8177 : dockerhub id
+    - mynginx:vi  -->  image명:tag(버전
+    - docker hub 레파지토리에 공유할 경우에 docker commit nginx <dockerhub 아이디>/image명:tag(버전)
+  - docker images --> 결과보면 REPOSITORY부분에 ddd8177/mynginx 생성된거 확인
+  - dockerhub publish - 이미지 공유 :  docker image push ddd8177/mynginx:v1
+  - - docker hub  - sign in 상태여야함 (login 상태)
+
+  
+
+> 카피한거 복귀
+
+- C:\Users\Chae\Desktop\TIL\docker_workspace\nginx>  현재위치가  이 디렉토리인지 확인
+- docker cp ./backup/index.html nginx:/usr/share/nginx/html/
+
+
+
+> 내가 생성한 이미지 활용
+
+- docker run --name mynginx -d -p 8000:80 ddd8177/mynginx:v1
+- - 8000포트로  --> http://localhost:8000
+- docker images 해서 이미지 생성되었는지 확인
+- 생성된 것 확인했으면 , localhost:80 하고 localhost:8000하고 확인해보기
+
+---
+
+- image pull : docker image pull ddd8177/mynginx:v1
+
+- 기존 이미지 삭제 : docker rmi ddd8177/mynginx:v1
+- mynginx server container 실행 : docker run --name mynginx -d -p 8000:80 ddd8177/mynginx:v1
+
+---
+
+> 도커 파일
+
+- vs code로 Dokerfile파일 생성(확장자 없이)
+- 서비스 할 index.html 생성
+- 
+
+
+
+---
 
 ---
 

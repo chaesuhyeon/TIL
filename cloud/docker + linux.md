@@ -123,10 +123,76 @@ tag : 버전
 > 도커 파일
 
 - vs code로 Dokerfile파일 생성(확장자 없이)
+
 - 서비스 할 index.html 생성
-- 
+
+- ```dockerfile
+  # container의 기본 이미지  :ubuntu
+  FROM ubuntu:latest
+  
+  # 실행중인 container에 nginx 서버 설치
+  RUN apt-get update && apt-get install -y -q nginx
+  
+  # host의 index.html container에 copy   --> 같은 위치에 있는(같은 Dockerfile 디렉토리에 있음) index.html 파일을 /var/www/html/ 경로로 복사
+  COPY index.html /var/www/html/
+  # COPY index.html /usr/share/nginx/html 이 경로 틀림!!!!!!!!! 
+  # ubuntu에서의 nginx 설치한뒤 한거라 conf의 위치가 달라짐
+  
+  # nginx server forground로 실행 (exec 형식으로 작성해봄)
+  CMD ["nginx", "-g" , "daemon off;"]
+  ```
+
+- cd C:\Users\Chae\Desktop\TIL\docker_workspace\Dockerfile 
+
+- - Dockerfile이 있는 디렉토리 위치로 이동 
+
+- docker image build -t mywebapp:v1 .
+
+- - ```
+    docker image build -t 이미지명:태그 Dockerfile위치(.이면 현재 있는 디렉토리에 파일이 존재) 
+    ```
+
+- docker images   --> mywebapp 이미지 생성되었는지 확인해보기
+
+- docker ps -->  포트번호 충돌 안나게 돌아가고 있는 컨테이너 PORTS 확인
+
+- docker run -d -p 9000:80 --name webpp mywebapp:v1
+
+- - webpp -> container 이름  // mywebapp : 이미지 이름 // vi :버전이름
+  - http://localhost:9000
+
+- docker ps  --> 컨테이너 돌아가는지 확인 (UP상태인지)
 
 
+
+- >기본이미지 nginx
+
+- ```dockerfile
+  # container의 기본 이미지  :nginx
+  FROM nginx:latest
+  
+  # nginx 설치할 필요 x
+  
+  # host의 index.html container에 copy   --> 같은 위치에 있는(같은 Dockerfile 디렉토리에 있음) index.html 파일을 /usr/share/nginx/html 경로로 복사
+  COPY index.html /usr/share/nginx/html
+  
+  # nginx server forground로 실행 (exec 형식으로 작성해봄)
+  CMD ["nginx", "-g" , "daemon off;"]
+  ```
+
+-  cd C:\Users\Chae\Desktop\TIL\docker_workspace\Dockerfile 
+
+- docker image build -t mywebapp:v2 .
+
+- docker images : 이미지 생성됐는지 확인
+
+- docker run --name webapp2 -d -p 8888:80 mywebapp:v2 
+
+- - 버전을 (태그를) v2로 해서 생성
+
+- docker ps
+
+- - webapp2 컨테이너가 돌아가고 있는지 확인
 
 ---
 

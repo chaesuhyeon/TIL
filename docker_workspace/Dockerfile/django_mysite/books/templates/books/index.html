@@ -1,0 +1,15 @@
+{% extends "base_books.html" %}
+
+{% block content %}
+    <h2>Books Management System</h2> <!---->
+    <ul>
+        {% for modelname in model_list %} <!-- context['model_list'] = ['Book', 'Author', 'Publisher'] -->
+{% with "books:"|add:modelname|lower|add:"_list" as urlvar %} <!-- url books:book_list  -->  <!-- url books:author_list  -->  <!-- url books:publisher_list  -->
+            <li><a href="{% url urlvar %}">{{ modelname }}</a></li> <!-- book을 누르냐,author을 누르냐, publisher을 누르냐에 따라 링크가 달라져야함-->
+{% endwith %}
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+<!--  url namespace(app_name): name(path attribute name value)  -->
+

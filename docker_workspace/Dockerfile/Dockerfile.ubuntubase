@@ -1,0 +1,13 @@
+# container의 기본 이미지  :ubuntu
+FROM ubuntu:latest
+
+# 실행중인 container에 nginx 서버 설치
+RUN apt-get update && apt-get install -y -q nginx
+
+# host의 index.html container에 copy   --> 같은 위치에 있는(같은 Dockerfile 디렉토리에 있음) index.html 파일을 /var/www/html/ 경로로 복사
+COPY index.html /var/www/html/
+# COPY index.html /usr/share/nginx/html 이 경로 틀림!!!!!!!!! 
+# ubuntu에서의 nginx 설치한뒤 한거라 conf의 위치가 달라짐
+
+# nginx server forground로 실행 (exec 형식으로 작성해봄)
+CMD ["nginx", "-g" , "daemon off;"]

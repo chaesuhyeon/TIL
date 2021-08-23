@@ -1,0 +1,15 @@
+{% extends "base_todos.html" %}
+{% block title %}일정 상세보기 페이지{% endblock %}
+{% block content %}
+  {% csrf_token %}
+  <h1> 일정 목록 보기</h1>
+  <li><a href="{% url 'todos:update' todo.id %}">일정 수정</a></li>
+  <li><a href="{% url 'todos:remove' todo.id %}" onclick="return confirm('정말 삭제하시겠습니까?')">일정 삭제</a></li>
+  <legend><h2>{{ todo.title }}</h2></legend>
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  <p>{{ todo.contents }} </p>
+  <p>{{ todo.todo_date }} </p>
+
+
+  <button type="button" onClick="history.go(-1) ">메인 메뉴로 가기</button>
+{% endblock %}

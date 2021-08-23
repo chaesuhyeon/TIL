@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <!-- jQuery JS -->
+    <script  src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+
+    <title>Title</title>
+</head>
+<body>
+<body>
+<!-- 네비게이션바 -->
+  {% include "navbar.html" %}
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

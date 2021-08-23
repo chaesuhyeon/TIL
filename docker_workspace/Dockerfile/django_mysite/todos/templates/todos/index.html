@@ -1,0 +1,17 @@
+{% extends "base_todos.html" %}
+{% block title %}일정 등록 페이지{% endblock %}
+{% block content %}
+<link rel ="stylesheet" href="./todo_css.css"></link>
+    <h1>Todo list </h1>
+    <a href="{% url 'todos:register' %}">일정 등록</a>
+
+    {% if todo_list %}
+        <ul>
+        {% for todo in todo_list %}
+            <li><a href="{% url 'todos:detail' todo.id %}">{{ todo.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p> 일정이 없습니다..</p>
+    {% endif %}
+{% endblock %}

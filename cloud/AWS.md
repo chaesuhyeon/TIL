@@ -24,3 +24,9 @@
 - code pipeline을 통해 환경으로 코드 배포
 
 - 환경이 서비스 배포
+
+
+
+- #### Lambda
+
+- serverless

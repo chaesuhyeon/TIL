@@ -30,3 +30,6 @@
 - #### Lambda
 
 - serverless
+
+- api gate way를 통해서 lambda로 요청?
+

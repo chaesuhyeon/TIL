@@ -38,3 +38,7 @@
 - #### DynamoDB
 
 - nosql
+
+
+
+- #### CORS문제 발생 (User data dynamodb로)

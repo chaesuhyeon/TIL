@@ -42,3 +42,5 @@
 
 
 - #### CORS문제 발생 (User data dynamodb로)
+
+- 리소스 간 도메인이 다를때 

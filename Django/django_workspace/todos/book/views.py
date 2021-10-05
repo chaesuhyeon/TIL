@@ -5,28 +5,28 @@ from rest_framework.response import Response
 from book.models import Book
 from book.serializer import BookSerializer
 
-
+#책 목록
 @api_view(['GET'])
 def book_list(request):
     books = Book.objects.all()
     serializer = BookSerializer(books, many=True)
     return Response(serializer.data)
 
-
+# 책 상세내용
 @api_view(['GET'])
 def book_detail(request, pk):
     book = Book.objects.get(id=pk)
     serializer = BookSerializer(book, many=False)
     return Response(serializer.data)
 
-
+# 책 검색기능
 @api_view(['POST'])
 def book_search(request, keyword):
     book = Book.objects.filter(title__icontains=keyword)
     serializer = BookSerializer(book, many=True)
     return Response(serializer.data)
 
-
+# 책 생성
 @api_view(['POST'])
 def book_create(request):
     print(request.data)
@@ -37,7 +37,7 @@ def book_create(request):
     # else:
     #     return Response(serializer.data)
 
-
+# 책 내용 수정
 @api_view(['PUT'])
 def book_update(request, pk):
     book = Book.objects.get(id=pk)
@@ -47,8 +47,8 @@ def book_update(request, pk):
         return Response({"message": "success"})
     else:
         return Response({"message": "failed"})
-
-
+ 
+# 책 삭제
 @api_view(['DELETE'])
 def book_delete(request, pk):
     book = Book.objects.get(id=pk)

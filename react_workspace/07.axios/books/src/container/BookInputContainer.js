@@ -9,7 +9,7 @@ class BookInputContainer extends Component{
     const {book , keyword, setProps , SeachBookKeyword , bookAdd , bookRemove , bookModify , bookSearch  } = this.bookStore
     return (
       <div>
-        <input type="text" name = "keyword" placeholder="Search..." value={keyword} onChange = {(e)=>SeachBookKeyword(e.target.value)}/>
+        {/* <input type="text" name = "keyword" placeholder="Search..." value={keyword} onChange = {(e)=>SeachBookKeyword(e.target.value)}/> */}
         <button onClick={()=>bookSearch(keyword)}>SEARCH</button> <br/>
         <input type="text" name ="isbn" placeholder="isbn" value={book.isbn} onChange = {(e)=>setProps(e.target.name, e.target.value)} /> <br/>
         <input type="text" name ="title" placeholder="title"  value={book.title} onChange = {(e)=>setProps(e.target.name, e.target.value)}/><br/>

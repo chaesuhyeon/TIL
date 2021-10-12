@@ -5,6 +5,7 @@ class BookApi{
 
 URL = '/api/book/'
 
+//path('', views.book_list, name="book_list"),
 bookList(){
   return axios.get(this.URL)
               .then((response)=>response.data);

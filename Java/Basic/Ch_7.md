@@ -149,7 +149,7 @@ class Point3D extends Point {
 1. 선언부(메서드 이름, 메개변수, 반환타입) 가 조상 클래스의 메서드와 일치해야함
    - 접근 제어자(access modifier)와 예외(exception)는 제한된 조건 하에서만 다르게 변경할 수 있음
 2. 접근 제어자는 조상 클래스의 메서드보다 좁은 범위로 변경할 수 없다.
-   - 접근 제어자의 접근범위 좁은 순 : public , protected, (defualt), private
+   - 접근 제어자의 접근범위 넓은 ~ 좁은 순 : public , protected, (defualt), private
 3. 조상 클래스의 메서드보다 많은 수의 예외를 선언할 수 없다
 
 
